@@ -1,3 +1,4 @@
+import { Layout } from "@/components/layout";
 import theme from "@/theme";
 import { FontFaces } from "@/theme/Fonts";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <NextSeo />
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <FontFaces />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ChakraProvider>
   );
 }
