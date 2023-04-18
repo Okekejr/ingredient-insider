@@ -53,3 +53,15 @@ export interface randomData {
   strCreativeCommonsConfirmed?: null;
   dateModified?: null;
 }
+
+export interface Status {
+  data: {
+    id: number;
+    statusT: string;
+  }[];
+}
+
+export interface newStatusT {
+  id: number;
+  statusT: string;
+}

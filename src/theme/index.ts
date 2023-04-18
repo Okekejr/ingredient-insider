@@ -2,7 +2,7 @@ import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { fonts } from "./Fonts";
 
 export const config: ThemeConfig = {
-  initialColorMode: "light",
+  initialColorMode: "dark",
   useSystemColorMode: true,
 };
 
