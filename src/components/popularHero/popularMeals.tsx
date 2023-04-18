@@ -1,6 +1,6 @@
 import { RANDOM_DISH } from "@/requests";
 import { randomData } from "@/types";
-import { Image, Text } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 import { FC, useEffect, useState } from "react";
 import { PopularFlex } from "../layout/popularFlex";
 

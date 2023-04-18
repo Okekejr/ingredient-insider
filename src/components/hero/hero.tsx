@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   HStack,
   Heading,
@@ -11,15 +10,13 @@ import {
 import { FC } from "react";
 import { SectionContainer } from "../layout/SectionContainer";
 import { TextAnimation } from "../animate/textAnimation";
+import { ButtonUtil } from "../button/button";
 
 export const Hero: FC<ContainerProps> = (props) => {
   return (
-    <SectionContainer {...props}>
-      <Flex
-        flexDir={{ base: "column-reverse", md: "column-reverse", lg: "row" }}
-        alignItems="center"
-      >
-        <Flex flexDirection="column">
+    <SectionContainer mt={{ base: "4.5rem", md: "4.5rem" }} {...props}>
+      <Flex flexDir={{ base: "column", lg: "row" }} alignItems="center">
+        <Flex flexDirection="column" mb={{ base: 8, md: 0 }}>
           <Heading
             fontWeight="black"
             fontSize={{ base: "2.5rem", md: "3rem" }}
@@ -39,25 +36,25 @@ export const Hero: FC<ContainerProps> = (props) => {
             start? No need to worry again!
           </Text>
           <HStack mt={8} spacing={8}>
-            <Button bgColor="green.500" height="50px" width="150px">
-              Get Started
-            </Button>
-            <Button
+            <ButtonUtil
+              title="Get Started"
+              bgColor="green.500"
+              _hover={{ bgColor: "#6DA9E4" }}
+            />
+            <ButtonUtil
+              title="Popular Dishes"
               borderColor="green.500"
-              height="50px"
-              width="150px"
               variant="outline"
-            >
-              Popular Dishes
-            </Button>
+              _hover={{ borderColor: "#6DA9E4" }}
+            />
           </HStack>
         </Flex>
-        <Box mb={{ base: 12, md: 0 }}>
+        <Box>
           <Image
             borderRadius="30px"
             src="/assets/img/Image.png"
             objectFit="cover"
-            alt=""
+            alt="pancake image with recipe"
           />
         </Box>
       </Flex>

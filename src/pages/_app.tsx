@@ -8,7 +8,12 @@ import type { AppProps } from "next/app";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <NextSeo />
+      <NextSeo
+        title="ingredientinsider"
+        titleTemplate="%s"
+        description="Learn to cook popular dishes with their
+        recipes"
+      />
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <FontFaces />
       <Layout>
