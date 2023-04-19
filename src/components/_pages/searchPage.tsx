@@ -1,20 +1,24 @@
 import { SEARCH_DISH } from "@/requests";
-import { Status } from "@/types";
+import { MealsT, Status } from "@/types";
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   Input,
   InputGroup,
   InputRightElement,
+  SlideFade,
   Text,
 } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import { Badge } from "../badge/Badge";
+import { Badge } from "../badge";
+import { PopularFlex } from "../layout/popularFlex";
 import { SectionContainer } from "../layout/SectionContainer";
+import { SearchCard } from "../search";
 
 const SearchPage: FC = () => {
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState<MealsT["meals"]>([]);
   const [searchT, setSearchT] = useState("");
   const [status, setStatus] = useState<Status["data"]>([]);
 
@@ -22,7 +26,7 @@ const SearchPage: FC = () => {
     try {
       const request = await fetch(`${SEARCH_DISH}s=${searchText}`);
       const resp = await request.json();
-      setResult(resp);
+      setResult(resp.meals);
     } catch (error) {
       alert(error);
     }
@@ -31,7 +35,7 @@ const SearchPage: FC = () => {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
 
-    // searchRequest(searchT);
+    searchRequest(searchT);
 
     // creating new status for the badges
     const newStatus = {
@@ -52,7 +56,7 @@ const SearchPage: FC = () => {
   };
 
   return (
-    <SectionContainer mt={{ base: "3rem", md: "4.5rem" }}>
+    <SectionContainer mt={{ base: "3rem", md: "3rem" }}>
       <form onSubmit={submitHandler}>
         <FormControl isRequired>
           <InputGroup size="lg" my={8} mx="auto" w={{ md: "lg" }}>
@@ -72,7 +76,7 @@ const SearchPage: FC = () => {
                 h="1.75rem"
                 size="md"
                 _hover={{ bgColor: "#6DA9E4" }}
-                onSubmit={submitHandler}
+                onClick={submitHandler}
               >
                 Submit
               </Button>
@@ -80,20 +84,34 @@ const SearchPage: FC = () => {
           </InputGroup>
         </FormControl>
       </form>
-      <Box display="flex" textAlign="center" m="auto" alignItems="center">
-        <Text mr="2">History:</Text>
-        {status.length
-          ? status.map((item) => {
-              return (
-                <Badge
-                  data={item}
-                  searchFunc={searchRequest}
-                  key={item.id}
-                  mr={4}
-                />
-              );
-            })
-          : "..."}
+      <Box display="column" textAlign="center">
+        <Flex justifyContent="center" alignItems="center" mb={8}>
+          <Text mr="2">Search from History:</Text>
+          {status.length
+            ? status.map((item) => {
+                return (
+                  <Badge
+                    data={item}
+                    searchFunc={searchRequest}
+                    key={item.id}
+                    mr={4}
+                  />
+                );
+              })
+            : ""}
+        </Flex>
+
+        <PopularFlex w={{ base: "100%" }}>
+          {result.length
+            ? result.map((item) => {
+                return (
+                  <SlideFade in offsetY="20px" delay={0.2}>
+                    <SearchCard data={item} key={item.idMeal} />
+                  </SlideFade>
+                );
+              })
+            : "...looks like something went wrong 😥"}
+        </PopularFlex>
       </Box>
     </SectionContainer>
   );

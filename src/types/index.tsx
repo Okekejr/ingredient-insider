@@ -52,6 +52,11 @@ export interface randomData {
   strImageSource?: null;
   strCreativeCommonsConfirmed?: null;
   dateModified?: null;
+  [key: string]: any;
+}
+
+export interface MealsT {
+  meals: randomData[];
 }
 
 export interface Status {
@@ -64,4 +69,17 @@ export interface Status {
 export interface newStatusT {
   id: number;
   statusT: string;
+}
+
+export interface categoriesT {
+  meals: {
+    strCategory: string;
+  }[];
+}
+
+export interface allTabT {
+  items: {
+    ingredients: string[];
+    measurements: string[];
+  }[];
 }
