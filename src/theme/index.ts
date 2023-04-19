@@ -3,7 +3,7 @@ import { fonts } from "./Fonts";
 
 export const config: ThemeConfig = {
   initialColorMode: "dark",
-  useSystemColorMode: true,
+  useSystemColorMode: false,
 };
 
 const theme = extendTheme({

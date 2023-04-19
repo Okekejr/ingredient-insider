@@ -1,5 +1,5 @@
 import { home } from "./home";
 import { search } from "./search";
-import { favourites } from "./favourites";
+import { categories } from "./categories";
 
-export const routes = [home, search, favourites];
+export const routes = [home, search, categories];

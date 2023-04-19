@@ -1,29 +1,29 @@
-import { newStatusT } from "@/types";
+import { FC } from "react";
 import { Badge as CBadge, BadgeProps, Text } from "@chakra-ui/react";
 
 interface Props extends BadgeProps {
-  data: newStatusT;
-  searchFunc: (searchText: string) => Promise<void>;
+  data?: {
+    strCategory?: string;
+  };
+  text?: string;
 }
 
-export const Badge: React.FC<Props> = ({ data, searchFunc, ...rest }) => {
-  const { statusT } = data;
-
+export const Pills: FC<Props> = ({ data, text, ...rest }) => {
   return (
     <CBadge
       borderRadius={4}
-      backgroundColor="green.400"
-      onClick={() => searchFunc(statusT)}
+      backgroundColor="#6DA9E4"
       _hover={{ cursor: "pointer" }}
       {...rest}
     >
       <Text
+        fontSize="sm"
         fontFamily="statusTags"
         fontWeight="normal"
         textTransform="none"
         color="white"
       >
-        {statusT}
+        {data?.strCategory || text}
       </Text>
     </CBadge>
   );
