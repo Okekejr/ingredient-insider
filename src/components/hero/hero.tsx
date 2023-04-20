@@ -16,7 +16,7 @@ export const Hero: FC<ContainerProps> = (props) => {
   return (
     <SectionContainer mt={{ base: "4.5rem", md: "4.5rem" }} {...props}>
       <Flex flexDir={{ base: "column", lg: "row" }} alignItems="center">
-        <Flex flexDirection="column" mb={{ base: 8, md: 0 }}>
+        <Flex flexDirection="column" mb={{ base: 8, md: 12, lg: 0 }}>
           <Heading
             fontWeight="black"
             fontSize={{ base: "2.5rem", md: "3rem" }}
@@ -54,8 +54,10 @@ export const Hero: FC<ContainerProps> = (props) => {
           <Image
             borderRadius="30px"
             src="/assets/img/Image.png"
+            width={{ base: "22rem", md: "40rem" }}
+            height={{ base: "17rem", md: "30rem" }}
             objectFit="cover"
-            alt="pancake image with recipe"
+            alt="pancake image with a recipe"
           />
         </Box>
       </Flex>

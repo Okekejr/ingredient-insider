@@ -110,10 +110,10 @@ const SearchPage: FC = () => {
 
       <PopularFlex w={{ base: "100%" }}>
         {result !== null && result.length
-          ? result.map((item) => {
+          ? result.map((item, i) => {
               return (
                 <SlideFade in offsetY="20px" delay={0.2}>
-                  <SearchCard data={item} key={item.idMeal} />
+                  <SearchCard data={item} key={i} />
                 </SlideFade>
               );
             })

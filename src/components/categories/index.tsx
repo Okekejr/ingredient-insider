@@ -1,6 +1,6 @@
 import { CATEGORIES_DISHES, CATEGORIES_LIST } from "@/requests";
 import { categoriesT, MealsT } from "@/types";
-import { SlideFade } from "@chakra-ui/react";
+import { Flex, SlideFade } from "@chakra-ui/react";
 import { FC, useEffect, useState } from "react";
 import { Badge } from "../badge";
 import { PopularFlex } from "../layout/popularFlex";
@@ -36,13 +36,20 @@ export const CategoriesList: FC = () => {
 
   return (
     <>
-      {list.length
-        ? list.map((item, i) => {
-            return (
-              <Badge newData={item} searchFunc={searchRequest} key={i} mr={4} />
-            );
-          })
-        : ""}
+      <Flex justifyContent="center" flexWrap="wrap" gap={4}>
+        {list.length
+          ? list.map((item, i) => {
+              return (
+                <Badge
+                  newData={item}
+                  searchFunc={searchRequest}
+                  key={i}
+                  mr={4}
+                />
+              );
+            })
+          : ""}
+      </Flex>
 
       <PopularFlex w={{ base: "100%" }} mt={{ base: 4, md: 8 }}>
         {searchT.length

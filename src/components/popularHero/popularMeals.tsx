@@ -38,6 +38,9 @@ export const PopularMeals: FC = () => {
                   borderWidth="2px"
                   boxSize="150px"
                   borderStyle="solid"
+                  width={36}
+                  height={36}
+                  alt={item.strMeal}
                   src={item.strMealThumb}
                   key={i}
                 />
