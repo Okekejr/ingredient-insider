@@ -7,7 +7,9 @@ import { PopularFlex } from "../layout/popularFlex";
 export const PopularMeals: FC = () => {
   const [dish, setDish] = useState<randomData[]>([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    random();
+  }, []);
 
   const random = async () => {
     try {
