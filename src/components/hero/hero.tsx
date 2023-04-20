@@ -38,14 +38,15 @@ export const Hero: FC<ContainerProps> = (props) => {
           <HStack mt={8} spacing={8}>
             <ButtonUtil
               title="Get Started"
+              href="/search"
               bgColor="green.500"
-              _hover={{ bgColor: "#6DA9E4" }}
+              _hover={{ bgColor: "#6DA9E4", textDecor: "none" }}
             />
             <ButtonUtil
               title="Popular Dishes"
               borderColor="green.500"
               variant="outline"
-              _hover={{ borderColor: "#6DA9E4" }}
+              _hover={{ borderColor: "#6DA9E4", textDecor: "none" }}
             />
           </HStack>
         </Flex>

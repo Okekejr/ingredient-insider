@@ -8,6 +8,9 @@ export const SEARCH_DISH =
 export const CATEGORIES_LIST =
   "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
 
+export const CATEGORIES_DISHES =
+  "https://www.themealdb.com/api/json/v1/1/filter.php?";
+
 export const FILTERING_THINGS = (data: randomData, whatToFilter: string) => {
   const filtered = Object.keys(data)
     .map((key) => {

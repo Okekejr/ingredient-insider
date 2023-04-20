@@ -22,7 +22,7 @@ const SearchPage: FC = () => {
   const [searchT, setSearchT] = useState("");
   const [status, setStatus] = useState<Status["data"]>([]);
 
-  const searchRequest = async (searchText: string) => {
+  const searchRequest = async (searchText: string | undefined) => {
     try {
       const request = await fetch(`${SEARCH_DISH}s=${searchText}`);
       const resp = await request.json();
@@ -43,8 +43,13 @@ const SearchPage: FC = () => {
       statusT: searchT,
     };
 
-    // add newstatus to the status history
-    setStatus([...status, newStatus]);
+    // check if the status already exists before adding
+    const statusExists = status.some((s) => s.statusT === newStatus.statusT);
+
+    // add new status to the status history
+    if (!statusExists) {
+      setStatus([...status, newStatus]);
+    }
 
     // clear input field
     setSearchT("");
@@ -56,7 +61,7 @@ const SearchPage: FC = () => {
   };
 
   return (
-    <SectionContainer mt={{ base: "3rem", md: "3rem" }}>
+    <SectionContainer mt={{ base: "4rem", md: "3rem" }}>
       <form onSubmit={submitHandler}>
         <FormControl isRequired>
           <InputGroup size="lg" my={8} mx="auto" w={{ md: "lg" }}>
@@ -84,6 +89,7 @@ const SearchPage: FC = () => {
           </InputGroup>
         </FormControl>
       </form>
+
       <Box display="column" textAlign="center">
         <Flex justifyContent="center" alignItems="center" mb={8}>
           <Text mr="2">Search from History:</Text>
@@ -100,19 +106,19 @@ const SearchPage: FC = () => {
               })
             : ""}
         </Flex>
-
-        <PopularFlex w={{ base: "100%" }}>
-          {result.length
-            ? result.map((item) => {
-                return (
-                  <SlideFade in offsetY="20px" delay={0.2}>
-                    <SearchCard data={item} key={item.idMeal} />
-                  </SlideFade>
-                );
-              })
-            : "...looks like something went wrong 😥"}
-        </PopularFlex>
       </Box>
+
+      <PopularFlex w={{ base: "100%" }}>
+        {result !== null && result.length
+          ? result.map((item) => {
+              return (
+                <SlideFade in offsetY="20px" delay={0.2}>
+                  <SearchCard data={item} key={item.idMeal} />
+                </SlideFade>
+              );
+            })
+          : "...nothing to display yet 🤔"}
+      </PopularFlex>
     </SectionContainer>
   );
 };

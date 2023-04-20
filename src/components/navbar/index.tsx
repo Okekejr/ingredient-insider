@@ -59,9 +59,10 @@ export const Navbar: FC<Props> = ({ isShrunk, ...rest }) => {
           bgColor="green.500"
           color="white"
           display={{ base: "none", sm: "flex" }}
+          href="/search"
           title="Get Started"
           height="45px"
-          _hover={{ bgColor: "#6DA9E4" }}
+          _hover={{ bgColor: "#6DA9E4", textDecor: "none" }}
         />
 
         <MobileToggle
