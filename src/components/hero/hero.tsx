@@ -14,7 +14,7 @@ import { ButtonUtil } from "../button/button";
 
 export const Hero: FC<ContainerProps> = (props) => {
   return (
-    <SectionContainer mt={{ base: "4.5rem", md: "4.5rem" }} {...props}>
+    <SectionContainer mt={{ base: "5.5rem", md: "4.5rem" }} {...props}>
       <Flex flexDir={{ base: "column", lg: "row" }} alignItems="center">
         <Flex flexDirection="column" mb={{ base: 8, md: 12, lg: 0 }}>
           <Heading
@@ -35,7 +35,11 @@ export const Hero: FC<ContainerProps> = (props) => {
             Want to learn to cook your favourite dishes but dont know how to
             start? No need to worry again!
           </Text>
-          <HStack mt={8} spacing={8}>
+          <HStack
+            justifyContent={{ base: "center", md: "left" }}
+            mt={8}
+            spacing={8}
+          >
             <ButtonUtil
               title="Get Started"
               href="/search"
@@ -54,7 +58,7 @@ export const Hero: FC<ContainerProps> = (props) => {
           <Image
             borderRadius="30px"
             src="/assets/img/Image.png"
-            width={{ base: "22rem", md: "40rem" }}
+            width={{ base: "23rem", md: "40rem" }}
             height={{ base: "17rem", md: "30rem" }}
             objectFit="cover"
             alt="pancake image with a recipe"
