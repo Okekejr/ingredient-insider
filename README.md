@@ -5,7 +5,7 @@
 
 > - A nextjs web-app that helps you learn to cook popular meals.
 
-### In this project we have:
+### In this project I have:
 
 > - Created a recipe app that helps you search for popular meals and gives you information on how to cook them.
 
